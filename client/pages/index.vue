@@ -1,157 +1,110 @@
 <template>
-  <div class="container">
-    <div>
-      <header class="content-logos">
-        <logo />
-        <span class="plus">+</span>
-        <VuesaxLogo />
-      </header>
-      <h1 class="title">
-        Nuxt.js + Vuesax
-      </h1>
-      <h2 class="subtitle">
-        <a href="https://vuesax.com/">Vuesax</a> is a framework of ui components for <a href="https://vuejs.org/">Vuejs</a>, It was created to make new interfaces that have a new trend and are visually beautiful
-      </h2>
-      <div class="links">
-        <h3 class="h3">
-          Vuesax
-        </h3>
-        <a
-          href="https://vuesax.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://discordapp.com/invite/9dsKtvB"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          Discord
-        </a>
-        <a
-          href="https://github.com/lusaxweb/vuesax"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div>
+    <header class="head">
+      <div class="logo">
+        <img class="logo__img" src="/captain.png" alt="logo" />
       </div>
-      <div class="links">
-        <h3 class="h3">
-          Nuxt.js
-        </h3>
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+      <div class="head__contain--text col-12">
+        <h1 class="header-primery">
+          <span class="header-primery--main d-block">أبجد هوز حطى كلمن </span>
+          <span class="header-primery--sub d-block">
+            .أبجد هوز حطى كلمن هوى إجراءات المراقبة المعززة التوازن
+          </span>
+        </h1>
       </div>
-    </div>
+    </header>
+
+    <main class="main">
+      <section class="main__info">
+        <div class="container-fluid">
+          <div class="text-center mb-5">
+            <h2 class="heading-secondary">
+              Exiting tour for adventurous people
+            </h2>
+          </div>
+          <div class="row ">
+            <div class="col-4 main__info--img"></div>
+            <div class="col-5 main__info--text">fgsfg</div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuesaxLogo from '~/components/VuesaxLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuesaxLogo
-  }
-}
+  components: {}
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style lang="scss" scoped>
+//heading spcial stayle
+.head {
+  color: white;
+  position: relative;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(147, 111, 213, 0.8),
+      rgba(112, 40, 180, 0.8)
+    ),
+    url("https://cdn.pixabay.com/photo/2019/10/14/15/27/alpine-4549189_1280.jpg");
+  background-size: cover;
+  background-position: top;
+  height: 65vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  z-index: 10;
+
+  &__contain {
+    &--text {
+      text-align: center;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+    }
+  }
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 55px;
-  color: #35495e;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-  margin: 25px 0;
+.logo {
+  position: absolute;
+  left: 1.7rem;
+  top: 1rem;
+  &__img {
+    height: 100px;
+  }
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 1.1rem;
-  color: #526488;
-  word-spacing: 2px;
-  padding-bottom: 15px;
-  max-width: 600px;
+.header-primery {
+  line-height: 8.5rem;
+  &--main {
+    font-size: 6rem;
+    font-weight: 400;
+    // word-spacing: 1.1rem;
+    // animation-name: moveInLeft;
+    // animation-duration: 0.9s;
+    // animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  &--sub {
+    font-size: 2rem;
+    font-weight: 700;
+    word-spacing: 1.1rem;
+    // animation: moveInRight 0.9s cubic-bezier(0.075, 0.82, 0.165, 1);
+    // -webkit-animation: moveInRight 0.9s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 }
 
-.subtitle a {
-  font-weight: 500;
-  color: inherit;
-}
-
-.links {
-  padding-top: 15px;
-  margin-bottom: 20px;
-}
-
-.content-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 500px;
-}
-
-.plus {
-  font-size: 2.5rem;
-  margin: 15px;
-  color: #35495e;
-}
-
-.h3 {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-weight: 400;
-  margin: 10px;
+.main__info {
+  background-color: #f6f6f6;
+  margin-top: -10rem;
+  height: 1000px;
+  padding: 15rem 0;
+  & .row {
+    margin-top: 10rem;
+  }
 }
 </style>
