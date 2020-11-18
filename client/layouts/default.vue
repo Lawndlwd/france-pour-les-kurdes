@@ -4,6 +4,9 @@
   </div>
 </template>
 
+<script>
+export default {};
+</script>
 <style>
 *,
 *::after,
@@ -19,11 +22,15 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  font-family: "Tajawal", sans-serif;
   font-weight: 400;
   line-height: 1.7;
   padding: 3rem;
   color: #777;
 }
-
+@media screen and (max-width: 457px) {
+  html {
+    font-size: 40.5%;
+  }
+}
 </style>

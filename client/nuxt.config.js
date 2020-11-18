@@ -13,6 +13,15 @@ export default {
         rel: "stylesheet",
         href:
           "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com"
+      },
+      {
+        href:
+          "https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap",
+        rel: "stylesheet"
       }
     ]
   },
@@ -34,8 +43,12 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/pwa"
+    "@nuxtjs/pwa",
+    "@nuxtjs/style-resources"
   ],
+  styleResources: {
+    scss: ["~/assets/scss/var.scss", "~/assets/scss/base.scss"]
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
