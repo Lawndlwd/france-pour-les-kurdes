@@ -28,9 +28,9 @@ body {
   padding: 3rem;
   color: #777;
 }
-@media screen and (max-width: 457px) {
+@media screen and (max-width: 768px) {
   html {
-    font-size: 40.5%;
+    font-size: 35.5%;
   }
 }
 </style>
