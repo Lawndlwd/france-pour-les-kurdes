@@ -112,7 +112,6 @@ export default {
   async asyncData({ $axios }) {
     try {
       const result = await $axios.$get("/home");
-      console.log(result);
       return {
         home: result.home[0]
       };
