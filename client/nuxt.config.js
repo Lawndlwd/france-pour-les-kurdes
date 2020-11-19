@@ -27,7 +27,7 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ["vuesax/dist/vuesax.css"],
+  css: ["vuesax/dist/vuesax.css", "~/assets/scss/main.scss"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ["@/plugins/vuesax"],
@@ -46,12 +46,11 @@ export default {
     "@nuxtjs/pwa",
     "@nuxtjs/style-resources"
   ],
-  styleResources: {
-    scss: ["~/assets/scss/var.scss", "~/assets/scss/base.scss"]
-  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: "http://localhost:8000/api"
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}
