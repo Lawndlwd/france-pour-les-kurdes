@@ -1,0 +1,148 @@
+.card-custom {
+  perspective: 70rem;
+  -moz-perspective: 70rem;
+  position: relative;
+  height: 34.625rem;
+
+  &__side {
+    height: 34.625rem;
+  
+    background-color: #eee;
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 .95rem 2.4rem rgba($color-black, 0.15);
+    -webkit-box-shadow: 0 .95rem 2.4rem rgba($color-black, 0.15);
+
+    &--back {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primery-light,
+          $color-primery-dark
+        );
+      }
+    }
+  }
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+  }
+
+  &__picture {
+    height: 40%;
+    background-size: cover;
+    background-blend-mode: screen;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+
+    &--2 {
+      background-image: url("/levo.jpg");
+    }
+  }
+
+  &__heading {
+    position: absolute;
+    top: 11.5rem;
+    right: .4rem;
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $color-white;
+    width: 80%;
+  }
+
+  &__heading-span {
+    padding: .7rem .95rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primery-light, 0.85),
+        rgba($color-primery-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 1.4rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      li {
+        text-align: center;
+        font-size: 1.1rem;
+        padding: 0.7rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+
+  &__cta {
+    text-align: center;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+  }
+
+  &__price-box {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $color-white;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-val {
+    font-size: 2rem;
+    font-weight: 100;
+  }
+}

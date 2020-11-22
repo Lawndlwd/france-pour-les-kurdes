@@ -1,9 +1,6 @@
 import Home from '../models/home.model.js'
 import asyncHandler from 'express-async-handler'
 
-
-
-
 /**
  * @desc fetch our homepage detail
  * @method GET
@@ -26,7 +23,6 @@ export const getHomePage = asyncHandler(async (req, res) => {
 		})
 	}
 })
-
 
 /**
  * @desc update homepage detail
@@ -100,7 +96,7 @@ export const updateHomePage = asyncHandler(async (req, res) => {
  * @desc create homepage detail
  * @method POST
  * @route api/home
- * @access Loucked 
+ * @access Loucked
  */
 export const createHomePage = asyncHandler(async (req, res) => {
 	let main_info_imgs = null

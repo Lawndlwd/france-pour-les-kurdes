@@ -1,31 +1,36 @@
 <template>
   <div>
-    <header class="head">
-      <div class="logo">
-        <img class="logo__img" src="/captain.png" alt="logo" />
-      </div>
-      <div class="head__contain--text col-12">
-        <h1 class="header-primery">
-          <span class="header-primery--main d-block"
-            >{{ home.header_main_text }}
-          </span>
-          <span class="header-primery--sub d-block">{{
-            home.header_sub_text
-          }}</span>
-        </h1>
+    <header
+      class="head"
+      :style="`background-image: url('${home.header_img}');`"
+    >
+      <div class="liner">
+        <div class="logo">
+          <img class="logo__img" src="/captain.png" alt="logo" />
+        </div>
+        <div class="head__contain--text col-12">
+          <h1 class="header-primery">
+            <span class="header-primery--main d-block"
+              >{{ home.header_main_text }}
+            </span>
+            <span class="header-primery--sub d-block">{{
+              home.header_sub_text
+            }}</span>
+          </h1>
+        </div>
       </div>
     </header>
 
     <main class="main">
       <section class="main__info">
-        <div class="container-fluid">
+        <div class="container">
           <div class="text-center mb-5">
             <h1 class="heading-secondary">
               إجراءات المراقبة المعززة
             </h1>
           </div>
-          <div class="container">
-            <div class="row">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
               <div class="col-sm-8 col-md-6 mb-sm-5 h-custom">
                 <div class="composition">
                   <img
@@ -33,7 +38,7 @@
                     :key="i"
                     :src="img"
                     :alt="img"
-                    :class="`composition__photo composition__photo--p${i+1}`"
+                    :class="`composition__photo composition__photo--p${i + 1}`"
                   />
                 </div>
               </div>
@@ -54,22 +59,20 @@
         </div>
       </section>
       <section class="main__cards">
-        <vs-card-group>
-          <Card
-            title="الاحتياجات الأكبر لرفض المتعة"
-            img="/levo.jpg"
-            peragraph="أبجد هوز حطى كلمن هوى ، إجراءات المراقبة المعززة. التوازن ،
-                الاحتياجات الأكبر لرفض المتعة .أبجد هوز حطى كلمن هوى ، إجراءات
-                المراقبة المعززة. التوازن ، الاحتياجات الأكبر لرفض المتعة .أبجد
-                هوز حطى كلمن هوى ، إجراءات المراقبة المعززة. التوازن ،
-                الاحتياجات الأكبر لرفض المتعة"
-            v-for="(card, i) in 6"
-            :key="i"
-          />
-        </vs-card-group>
+        <div class="container">
+          <div class="row justify-content-center">
+            <Card
+              title="الاحتياجات الأكبر لرفض المتعة"
+              img="/levo.jpg"
+              peragraph="أبجد هوز حطى كلمن هوى ، إجراءات المرتعة .أبجد هوز حطى كلم"
+              v-for="(card, i) in 3"
+              :key="i"
+            />
+          </div>
+        </div>
       </section>
     </main>
-    <section class="before-footer">
+    <!-- <section class="before-footer">
       <div class="row">
         <div class="col-6 text-center">
           <img
@@ -88,16 +91,8 @@
           />
         </div>
       </div>
-    </section>
-    <footer class="footer">
-      <div class="row">
-        <div class="col-12">
-          <div class="copyright heading-third text-center">
-            &copy; 2020 - france pour les kurds - All Rights Reserved.
-          </div>
-        </div>
-      </div>
-    </footer>
+    </section> -->
+
   </div>
 </template>
 
@@ -111,7 +106,7 @@ export default {
   },
   async asyncData({ $axios }) {
     try {
-      const result = await $axios.$get("/home");
+      const result = await $axios.$get("api/home");
       return {
         home: result.home[0]
       };

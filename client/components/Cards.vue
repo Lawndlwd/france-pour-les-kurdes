@@ -1,31 +1,42 @@
 <template>
-  <div>
-    <vs-card>
-      <template #title>
-        <h2 class="heading-third p-2">
-          {{ title }}
-        </h2>
-      </template>
-      <template #img class="mb-5">
-        <img :src="img" :alt="title" />
-      </template>
-      <template #text>
-        <p class="peragraph p-2">
-          {{ peragraph }}
-        </p>
-      </template>
-      <template #interactions>
-        <vs-button success icon>
-          <i class="bx bx-heart"></i>
-        </vs-button>
-      </template>
-    </vs-card>
+  <div class=" col-xs-8 col-sm-8 col-md-4 col-lg-4 mb-5 ">
+    <div class="card-custom">
+      <div class="card-custom__side card-custom__side--front">
+        <div class="card-custom__picture card-custom__picture--2">
+          &nbsp;
+        </div>
+        <h4 class="card-custom__heading">
+          <span class="card-custom__heading-span card-custom__heading-span--2"
+            >The sea Explorer
+          </span>
+        </h4>
+        <div class="card-custom__details">
+          <ul>
+            <li>3 days tous</li>
+            <li>Up to 30 people</li>
+            <li>2 tour guides</li>
+            <li>Sleep in cozy hotels</li>
+            <li>Difficulty : easy</li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="card-custom__side card-custom__side--back card-custom__side--back-2"
+      >
+        <div class="card-custom__cta">
+          <div class="card-custom__price-box">
+            <p class="card-custom__price-only">Only</p>
+            <p class="card-custom__price-val">299$</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["title", "peragraph",'img']
+  props: ["title", "peragraph", "img"]
 };
 </script>
 
