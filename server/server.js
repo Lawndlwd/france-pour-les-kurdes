@@ -8,6 +8,7 @@ import connectDB from './config/db.config.js'
 
 import homeRoute from './routes/home.routes.js'
 import userRoute from './routes/user.routes.js'
+import {save} from './routes/search.routes.js'
 
 import { notFound, errHandler } from './middlewares/errorHandler.js'
 
@@ -21,6 +22,7 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
 
 app.use('/api/home', homeRoute)
 app.use('/api/auth', userRoute)

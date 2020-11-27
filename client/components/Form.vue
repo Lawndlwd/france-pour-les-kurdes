@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitFn" class="form col-sm-8 col-md-6">
+  <form @submit.prevent="submitFn" class="form col-sm-12 col-md-10">
     <div class="mb-5">
       <h2 class="heading-secondary text-right"> {{heading}} </h2>
     </div>

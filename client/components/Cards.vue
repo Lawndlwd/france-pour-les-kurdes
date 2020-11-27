@@ -7,16 +7,16 @@
         </div>
         <h4 class="card-custom__heading">
           <span class="card-custom__heading-span card-custom__heading-span--2"
-            >The sea Explorer
+            >{{member.name}}
           </span>
         </h4>
         <div class="card-custom__details">
           <ul>
-            <li>3 days tous</li>
-            <li>Up to 30 people</li>
-            <li>2 tour guides</li>
+            <li>city: {{member.city}}</li>
+            <li>from : {{member.from}}</li>
+            <!-- <li>2 tour guides</li>
             <li>Sleep in cozy hotels</li>
-            <li>Difficulty : easy</li>
+            <li>Difficulty : easy</li> -->
           </ul>
         </div>
       </div>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  props: ["title", "peragraph", "img"]
+  props: ["title", "peragraph", "img", "member"]
 };
 </script>
 

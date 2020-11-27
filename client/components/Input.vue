@@ -7,7 +7,6 @@
       :value="value"
       @input="updateData($event.target.value)"
       :id="id"
-      required
     />
     <label :for="id" class="form__label">{{label}}</label>
   </div>

@@ -1,18 +1,19 @@
 <template>
   <div>
     <Nav />
+    
     <Nuxt />
     <Footer />
   </div>
 </template>
 
 <script>
-
 import Nav from "~/components/Nav";
 import Footer from "~/components/Footer";
 export default {
   components: {
-    Nav,Footer
+    Nav,
+    Footer
   }
 };
 </script>
@@ -26,7 +27,7 @@ export default {
 }
 
 html {
-  font-size: 100%
+  font-size: 100%;
 }
 
 body {
@@ -40,7 +41,7 @@ body {
 }
 @media screen and (max-width: 768px) {
   html {
-    font-size: 35.5%;
+    font-size: 75.0%;
   }
 }
 </style>

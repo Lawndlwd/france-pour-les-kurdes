@@ -5,9 +5,7 @@
       :style="`background-image: url('${home.header_img}');`"
     >
       <div class="liner">
-        <div class="logo">
-          <img class="logo__img" src="/captain.png" alt="logo" />
-        </div>
+        
         <div class="head__contain--text col-12">
           <h1 class="header-primery">
             <span class="header-primery--main d-block"
@@ -31,7 +29,7 @@
           </div>
           <div class="container-fluid">
             <div class="row justify-content-center">
-              <div class="col-sm-8 col-md-6 mb-sm-5 h-custom">
+              <div class="col-sm-8 col-md-6 mb-sm-5 h-custom-15">
                 <div class="composition">
                   <img
                     v-for="(img, i) in home.main_info_imgs"
@@ -42,7 +40,7 @@
                   />
                 </div>
               </div>
-              <div class="col-sm-8 col-md-6 mt-sm-5 h-custom ">
+              <div class="col-sm-8 col-md-6 mt-sm-5 h-custom-25 ">
                 <TextBlock
                   :title="home.main_text_1"
                   :peragraph="home.sub_text_1"
@@ -61,13 +59,6 @@
       <section class="main__cards">
         <div class="container">
           <div class="row justify-content-center">
-            <Card
-              title="الاحتياجات الأكبر لرفض المتعة"
-              img="/levo.jpg"
-              peragraph="أبجد هوز حطى كلمن هوى ، إجراءات المرتعة .أبجد هوز حطى كلم"
-              v-for="(card, i) in 3"
-              :key="i"
-            />
           </div>
         </div>
       </section>
@@ -104,14 +95,9 @@ export default {
     Card,
     TextBlock
   },
-  async asyncData({ $axios }) {
-    try {
-      const result = await $axios.$get("api/home");
-      return {
-        home: result.home[0]
-      };
-    } catch (error) {
-      console.log(error);
+  computed: {
+    home(){
+      return this.$store.getters.home
     }
   }
 };
