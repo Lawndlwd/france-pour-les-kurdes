@@ -31,12 +31,11 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
-    "multer-sharp-s3": "^0.2.1",
     "object-hash": "^2.0.3",
     "sharp": "^0.26.3",
-    "validator": "^13.1.17"
+    "validator": "^13.1.17",
+    "concurrently": "^5.3.0"
   },
   "devDependencies": {
-    "concurrently": "^5.3.0"
   }
 }
