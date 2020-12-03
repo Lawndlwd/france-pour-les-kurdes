@@ -2,21 +2,22 @@
   <div class=" col-xs-8 col-sm-8 col-md-4 col-lg-4 mb-5 ">
     <div class="card-custom">
       <div class="card-custom__side card-custom__side--front">
-        <div class="card-custom__picture card-custom__picture--2">
-          &nbsp;
+        <div class="card-custom__picture">
+          <img :src="img" :alt="img" class="card-custom__picture--img">
         </div>
         <h4 class="card-custom__heading">
-          <span class="card-custom__heading-span card-custom__heading-span--2"
+          <span :class="`card-custom__heading-span card-custom__heading-span--${isFull}`"
             >{{member.name}}
           </span>
         </h4>
         <div class="card-custom__details">
           <ul>
-            <li>city: {{member.city}}</li>
-            <li>from : {{member.from}}</li>
-            <!-- <li>2 tour guides</li>
-            <li>Sleep in cozy hotels</li>
-            <li>Difficulty : easy</li> -->
+            <li v-if="member.city">city: {{member.city}}</li>
+            <li v-if="member.from">from : {{member.from}}</li>
+            <li v-if="member.work">job: {{member.work}}</li>
+            <li v-if="member.facebookLink">from : {{member.facebookLink}}</li>
+            <li v-if="member.email">email : {{member.email}}</li>
+            <li v-if="member.description">description: {{member.description}}</li>
           </ul>
         </div>
       </div>
@@ -36,7 +37,7 @@
 
 <script>
 export default {
-  props: ["title", "peragraph", "img", "member"]
+  props: ["title", "peragraph", "img", "member","isFull"]
 };
 </script>
 

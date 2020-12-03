@@ -5,8 +5,8 @@
     </div>
     <slot/>
     <div class="form__group">
-      <button class="btn btn-success">
-        &rarr; {{btn}} 
+      <button class="btn btn-success" :disabled="disabled">
+        {{btn}} &larr;  
       </button>
     </div>
   </form>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    props: ["heading", "btn","submitFn"],
+    props: ["heading", "btn","submitFn","disabled"],
   methods: {
     updateData(value) {
       this.$emit('input', value)

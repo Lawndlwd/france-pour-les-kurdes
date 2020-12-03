@@ -304,11 +304,13 @@
     &:focus {
       outline: none;
       box-shadow: 0 0.4rem 1.1rem rgba($color-black, 0.1);
-      border-bottom: 3px solid $color-primery;
+      border-left: 1px solid $color-primery;
     }
-
-    &:focus:invalid {
-      border-bottom: 3px solid $color-secondry-dark;
+    &--error {
+      border-bottom: 3px solid red;
+    }
+    &--msg{
+      color: red;
     }
 
     &::-webkit-input-placeholder {
@@ -328,11 +330,12 @@
   &__input:placeholder-shown + &__label {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-2rem);
+    transform: translateY(2rem);
   }
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
-  background-color:$color-primery;
-  border-color:$color-primery;
+  background-color: $color-primery;
+  border-color: $color-primery;
 }
+

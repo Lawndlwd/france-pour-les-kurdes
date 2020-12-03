@@ -15,10 +15,11 @@
         <div class="row justify-content-center">
           <Card
             title="الاحتياجات الأكبر لرفض المتعة"
-            img="/levo.jpg"
             peragraph="أبجد هوز حطى كلمن هوى ، إجراءات المرتعة .أبجد هوز حطى كلم"
             v-for="member in members"
+            :img="member.avatar"
             :member="member"
+            :isFull="member.isFull ? 1 : 2"
             :key="member._id"
           />
         </div>

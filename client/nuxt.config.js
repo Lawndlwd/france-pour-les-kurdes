@@ -1,6 +1,10 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    htmlAttrs: {
+      lang: 'ar',
+      dir:'rtl'
+    },
     title: "client",
     meta: [
       { charset: "utf-8" },
@@ -30,7 +34,7 @@ export default {
   css: ["~/assets/scss/main.scss"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ["~/plugins/vuelidate"],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

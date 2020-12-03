@@ -36,12 +36,20 @@ const userSchema = mongoose.Schema(
 			type: String,
 			default: null,
 		},
+		avatar: {
+			type: String,
+		},
 		isAdmin: {
 			type: Boolean,
 			required: true,
 			default: false,
 		},
 		isPublished: {
+			type: Boolean,
+			required: true,
+			default: false,
+		},
+		isFull: {
 			type: Boolean,
 			required: true,
 			default: false,

@@ -5,7 +5,6 @@
       :style="`background-image: url('${home.header_img}');`"
     >
       <div class="liner">
-        
         <div class="head__contain--text col-12">
           <h1 class="header-primery">
             <span class="header-primery--main d-block"
@@ -29,17 +28,6 @@
           </div>
           <div class="container-fluid">
             <div class="row justify-content-center">
-              <div class="col-sm-8 col-md-6 mb-sm-5 h-custom-15">
-                <div class="composition">
-                  <img
-                    v-for="(img, i) in home.main_info_imgs"
-                    :key="i"
-                    :src="img"
-                    :alt="img"
-                    :class="`composition__photo composition__photo--p${i + 1}`"
-                  />
-                </div>
-              </div>
               <div class="col-sm-8 col-md-6 mt-sm-5 h-custom-25 ">
                 <TextBlock
                   :title="home.main_text_1"
@@ -52,14 +40,24 @@
 
                 <a href="#" class="btn-text">&larr; محبة </a>
               </div>
+              <div class="col-sm-8 col-md-6 mb-sm-5 h-custom-15">
+                <div class="composition">
+                  <img
+                    v-for="(img, i) in home.main_info_imgs"
+                    :key="i"
+                    :src="img"
+                    :alt="img"
+                    :class="`composition__photo composition__photo--p${i + 1}`"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <section class="main__cards">
         <div class="container">
-          <div class="row justify-content-center">
-          </div>
+          <div class="row justify-content-center"></div>
         </div>
       </section>
     </main>
@@ -83,7 +81,6 @@
         </div>
       </div>
     </section> -->
-
   </div>
 </template>
 
@@ -96,8 +93,13 @@ export default {
     TextBlock
   },
   computed: {
-    home(){
-      return this.$store.getters.home
+    home() {
+      return this.$store.getters.home;
+    }
+  },
+  created() {
+    if(this.$auth.loggedIn && this.$store.getters.user !== {}){
+      this.$store.dispatch("setUser",this.$auth.user)
     }
   }
 };

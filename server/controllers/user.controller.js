@@ -6,10 +6,9 @@ import algoliasearch from 'algoliasearch'
 
 const client = algoliasearch(
 	(process.env.ALGOLIA_APP_ID = '3LWUG0HA7L'),
-	(process.env.ALGOLIA_API_KEY = '5aac3de8abf8410bd84f1288ebe62d6c'),
+	(process.env.ALGOLIA_API_KEY = '5aac3de8abf8410bd84f1288ebe62d6c')
 )
 const index = client.initIndex('cards')
-
 
 /**
  * @desc auth user & get token
@@ -19,38 +18,17 @@ const index = client.initIndex('cards')
  */
 export const authUser = asyncHandler(async (req, res) => {
 	const { email, password } = req.body
-
 	const user = await User.findOne({ email })
 
 	if (user && (await user.matchPassword(password))) {
-		const {
-			_id,
-			email,
-			name,
-			isAdmin,
-			isPublished,
-			work,
-			city,
-			facebookLink,
-			description,
-		} = user
+	
 		res.json({
-			user: {
-				_id,
-				email,
-				name,
-				isAdmin,
-				isPublished,
-				work,
-				city,
-				facebookLink,
-				description,
-			},
+			user,
 			token: generateToken(user._id),
 		})
 	} else {
 		res.status(401)
-		throw new Error('invalid email or password')
+		throw new Error('Invalid email or password')
 	}
 })
 
@@ -67,38 +45,20 @@ export const createUser = asyncHandler(async (req, res) => {
 		res.status(400)
 		throw new Error('user already exit')
 	}
-	const user = await User.create({ email, password, name })
-
-	if (user) {
-		const {
-			_id,
-			email,
-			name,
-			isAdmin,
-			isPublished,
-			work,
-			city,
-			facebookLink,
-			description,
-			originCity,
-		} = user
-		res.status(201).json({
-			user: {
-				_id,
-				email,
-				name,
-				isAdmin,
-				isPublished,
-				work,
-				city,
-				facebookLink,
-				description,
-				originCity,
-			},
-		})
-	} else {
-		res.status(401)
-		throw new Error('invalid email or password')
+	try {
+		const user = await User.create(
+			{ email, password, name }
+			)
+			
+			if (user) {
+			res.status(201).json({user})
+		} else {
+			res.status(401)
+			throw new Error('invalid email or password')
+		}
+		
+	} catch (error) {
+		console.log(error)
 	}
 })
 
@@ -127,30 +87,8 @@ const _getIdFromToken = asyncHandler(async (req, res) => {
 export const getUser = asyncHandler(async (req, res) => {
 	try {
 		const id = await _getIdFromToken(req, res)
-		const {
-			_id,
-			email,
-			name,
-			isAdmin,
-			isPublished,
-			work,
-			city,
-			facebookLink,
-			description,
-			originCity,
-		} = await User.findById(id)
-		res.json({
-			_id,
-			email,
-			name,
-			isAdmin,
-			isPublished,
-			work,
-			city,
-			facebookLink,
-			description,
-			originCity,
-		})
+		const user = await User.findById(id, { password: false })
+		res.json(user)
 	} catch (error) {
 		console.log(error)
 	}
@@ -164,14 +102,15 @@ export const getUser = asyncHandler(async (req, res) => {
  */
 export const getAllUsersProfiles = asyncHandler(async (req, res) => {
 	try {
-		const users = await User.find({'isPublished': true},{'password': false})
-		// const algolia = await index.saveObjects(users, {
-		// 	custom_objectID: '_id',
-		// })
-		// console.log(algolia)
+		const users = await User.find(
+			{ isPublished: true },
+			{ password: false }
+		)
+
 		res.json(users)
 	} catch (error) {
-		console.log(error)
+		res.status(500)
+		throw new Error('Try again after a while')
 	}
 })
 
@@ -182,71 +121,55 @@ export const getAllUsersProfiles = asyncHandler(async (req, res) => {
  * @access privete
  */
 export const updateUser = asyncHandler(async (req, res) => {
+	console.log(req.file)
 	const id = await _getIdFromToken(req, res)
-	const user = await User.findById(id)
-	const {
-		email,
-		name,
-		isAdmin,
-		isPublished,
-		work,
-		city,
-		facebookLink,
-		description,
-		originCity,
-	} = req.body
-	console.log(req.body)
-	const data = {
-		email,
-		name,
-		isAdmin,
-		isPublished,
-		work,
-		city,
-		facebookLink,
-		description,
-		originCity,
-	}
+	try {
+		const user = await User.findById(id)
 
-	if (user) {
-		try {
-			const {
-				_id,
-				email,
-				name,
-				isAdmin,
-				isPublished,
-				work,
-				city,
-				facebookLink,
-				description,
-				originCity,
-			} = await User.findByIdAndUpdate(id, data, { new: true })
+		if (user) {
+			user.email = req.body.email || user.email
+			user.name = req.body.name || user.name
+			user.isAdmin =
+				typeof req.body.isAdmin !== 'undefined'
+					? req.body.isAdmin
+					: user.isAdmin
+			user.isFull =
+				typeof req.body.isFull !== 'undefined'
+					? req.body.isFull
+					: user.isFull
+
+			user.isPublished =
+				typeof req.body.isPublished !== 'undefined'
+					? req.body.isPublished
+					: user.isPublished
+			console.log(req.body.isPublished)
+			user.work = req.body.work || user.work
+			user.city = req.body.city || user.city
+			user.facebookLink = req.body.facebookLink || user.facebookLink
+			user.description = req.body.description || user.description
+			user.originCity = req.body.originCity || user.originCity
+			if (req.file) {
+				user.avatar = req.file.location
+			} else {
+				user.avatar = user.avatar
+			}
+			const updatedProfile = await user.save({
+				new: true,
+			})
 			res.json({
-				user: {
-					_id,
-					email,
-					name,
-					isAdmin,
-					isPublished,
-					work,
-					city,
-					facebookLink,
-					description,
-					originCity,
-				},
+				user: updatedProfile,
 				status: 200,
 				message: 'Successfuly updated',
 			})
-		} catch (error) {
-			console.log(error)
-			res.status(500).json({
-				success: false,
-				message: error.message,
-			})
+		} else {
+			res.status(401)
+			throw new Error('invalid email or password')
 		}
-	} else {
-		res.status(401)
-		throw new Error('invalid email or password')
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({
+			success: false,
+			message: error.message,
+		})
 	}
 })

@@ -60,7 +60,7 @@
           </li>
           <li class="navigation__item" v-else>
             <nuxt-link
-              to="/signup"
+              to="/login"
               @click.native="openNav"
               class=" navigation__link"
               >الدخول/التسجيل كعضو</nuxt-link
