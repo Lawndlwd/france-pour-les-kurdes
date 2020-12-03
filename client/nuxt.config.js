@@ -2,8 +2,8 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
-      lang: 'ar',
-      dir:'rtl'
+      lang: "ar",
+      dir: "rtl"
     },
     title: "client",
     meta: [
@@ -29,7 +29,10 @@ export default {
       }
     ]
   },
-
+  server: {
+    port: 3000, // default: 3000
+    host: "0.0.0.0" // default: localhost
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ["~/assets/scss/main.scss"],
 
@@ -79,7 +82,7 @@ export default {
         // tokenRequired: true,
         // tokenType: 'bearer',
         // globalToken: true,
-         autoFetchUser: true
+        autoFetchUser: true
       }
     }
   }
