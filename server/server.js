@@ -1,4 +1,4 @@
-import colors from 'colors' 
+import colors from 'colors'
 import dotenv from 'dotenv'
 import express from 'express'
 import morgan from 'morgan'
@@ -6,10 +6,11 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import connectDB from './config/db.config.js'
 
-
 import homeRoute from './routes/home.routes.js'
+import userRoute from './routes/user.routes.js'
+import {save} from './routes/search.routes.js'
 
-
+import { notFound, errHandler } from './middlewares/errorHandler.js'
 
 const port = process.env.PORT || 8000
 
@@ -24,9 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 app.use('/api/home', homeRoute)
-
-
-
+app.use('/api/auth', userRoute)
+app.use(notFound)
+app.use(errHandler)
 
 app.listen(port, (err) => {
 	if (err) {

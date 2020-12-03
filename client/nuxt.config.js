@@ -1,6 +1,10 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    htmlAttrs: {
+      lang: 'ar',
+      dir:'rtl'
+    },
     title: "client",
     meta: [
       { charset: "utf-8" },
@@ -9,11 +13,11 @@ export default {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href:
-          "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      },
+      // {
+      //   rel: "stylesheet",
+      //   href:
+      //     "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css",
+      // },
       {
         rel: "preconnect",
         href: "https://fonts.gstatic.com"
@@ -27,10 +31,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ["vuesax/dist/vuesax.css", "~/assets/scss/main.scss"],
+  css: ["~/assets/scss/main.scss"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["@/plugins/vuesax"],
+  plugins: ["~/plugins/vuelidate"],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -44,14 +48,39 @@ export default {
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
-    "@nuxtjs/style-resources"
+    "@nuxtjs/style-resources",
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/auth"
   ],
+  proxy: {
+    "/api": "http://localhost:8000"
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: "http://localhost:8000/api"
+    proxy: true,
+    baseURL: "http://localhost:8000"
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {},
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "/api/auth/login",
+            method: "post",
+            propertyName: "token"
+          },
+          logout: true,
+          user: { url: "/api/auth/user", method: "get", propertyName: false }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+        // globalToken: true,
+         autoFetchUser: true
+      }
+    }
+  }
 };
